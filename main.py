@@ -29,7 +29,7 @@ def seed_everything(seed_value):
 
 
 class se_block(nn.Module):
-    def __init__(self, channel, ratio=8):
+    def __init__(self, channel, ratio=16):
         super(se_block, self).__init__()
         self.avg_pool = nn.AdaptiveAvgPool2d(1)
         self.fc = nn.Sequential(
@@ -313,7 +313,7 @@ if __name__ == '__main__':
     parser.add_argument('--use_se_block', type=bool, default=False)
     # parser.add_argument('--logger', type=str, default=r'./logger.txt')
     parser.add_argument('--seed', type=int, required=True)
-    parser.add_argument('--lr', type=float, default=0.00001)
+    parser.add_argument('--lr', type=float, default=0.00005)
     parser.add_argument('--bs', type=int, default=256)
     parser.add_argument('--epochs', type=int, default=800)
     config = parser.parse_args()
