@@ -170,7 +170,7 @@ def main(config):
     t = time.time()
 
     main_path = r'./input/norm_u_v_os'
-    subName = os.listdir(main_path)
+    subName = sorted(os.listdir(main_path))
 
     # ./norm_u_v_os
     # |---006
@@ -190,9 +190,9 @@ def main(config):
         # |---0
         # |---1
         # |---2
-        expression = os.listdir(main_path + '/' + n_subName + '/u_train')
+        expression = sorted(os.listdir(main_path + '/' + n_subName + '/u_train'))
         for n_expression in expression:
-            img = os.listdir(main_path + '/' + n_subName + '/u_train/' + n_expression)
+            img = sorted(os.listdir(main_path + '/' + n_subName + '/u_train/' + n_expression))
 
             # ./006_u_train
             # |---0
@@ -204,9 +204,9 @@ def main(config):
                 X_train.append(cv2.imread(main_path + '/' + n_subName + '/u_train/' + n_expression + '/' + n_img))
 
         # Get test dataset
-        expression = os.listdir(main_path + '/' + n_subName + '/u_test')
+        expression = sorted(os.listdir(main_path + '/' + n_subName + '/u_test'))
         for n_expression in expression:
-            img = os.listdir(main_path + '/' + n_subName + '/u_test/' + n_expression)
+            img = sorted(os.listdir(main_path + '/' + n_subName + '/u_test/' + n_expression))
 
             for n_img in img:
                 y_test.append(int(n_expression))
