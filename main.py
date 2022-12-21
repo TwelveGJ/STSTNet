@@ -29,7 +29,7 @@ def seed_everything(seed_value):
 
 
 class se_block(nn.Module):
-    def __init__(self, channel, ratio=16):
+    def __init__(self, channel, ratio=8):
         super(se_block, self).__init__()
         self.avg_pool = nn.AdaptiveAvgPool2d(1)
         self.fc = nn.Sequential(
@@ -139,9 +139,9 @@ def recognition_evaluation(final_gt, final_pred, show=False):
 
 def main(config):
     seed_everything(config.seed)
-    learning_rate = 0.00005
-    batch_size = 256
-    epochs = 800
+    learning_rate = config.lr
+    batch_size = config.bs
+    epochs = config.epochs
 
     is_cuda = torch.cuda.is_available()
     if is_cuda:
@@ -313,5 +313,8 @@ if __name__ == '__main__':
     parser.add_argument('--use_se_block', type=bool, default=False)
     # parser.add_argument('--logger', type=str, default=r'./logger.txt')
     parser.add_argument('--seed', type=int, required=True)
+    parser.add_argument('--lr', type=float, default=0.00001)
+    parser.add_argument('--bs', type=int, default=256)
+    parser.add_argument('--epochs', type=int, default=800)
     config = parser.parse_args()
     main(config)
