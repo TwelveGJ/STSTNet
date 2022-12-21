@@ -155,9 +155,9 @@ def main(config):
         if not path.exists('STSTNet_Weights'):
             os.mkdir('STSTNet_Weights')
 
-    logger_file = r'.\logger\logger'
+    logger_file = r'./logger/logger'
     if config.use_se_block:
-        logger_file = r'.\logger\logger_se'
+        logger_file = r'./logger/logger_se'
     logging.basicConfig(filename=logger_file + '_seed_' + str(config.seed) + '.txt', level=logging.DEBUG)
 
     logging.info('train=%d, use_se_block=%d, seed=%d' % (config.train, config.use_se_block, config.seed))
@@ -169,10 +169,10 @@ def main(config):
 
     t = time.time()
 
-    main_path = r'.\input\norm_u_v_os'
+    main_path = r'./input/norm_u_v_os'
     subName = os.listdir(main_path)
 
-    # .\norm_u_v_os
+    # ./norm_u_v_os
     # |---006
     # |---007
     # |...
@@ -186,7 +186,7 @@ def main(config):
         y_test = []
 
         # Get train dataset
-        # .\006_u_train
+        # ./006_u_train
         # |---0
         # |---1
         # |---2
@@ -194,7 +194,7 @@ def main(config):
         for n_expression in expression:
             img = os.listdir(main_path + '/' + n_subName + '/u_train/' + n_expression)
 
-            # .\006_u_train
+            # ./006_u_train
             # |---0
             # |   |---xxx.png
             # |   |...
